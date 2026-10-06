@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Vue Template</title>
-    <!-- Import Styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.css" />
-    <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <div class="nav-bar"></div>
 
-      <h1>{{ intro }}</h1>
-      
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue Template</title>
+  <!-- Import Styles -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css" />
+  <!-- Import Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="nav-bar"></div>
+
+    <h1>{{ intro }}</h1>
+
+    <!-- <h1>{{name}}</h1>
+
+    <input v-model="name" placeholder="enter name"> -->
+
+    <!-- <h1 v-for="item in list" :key="item">{{item}}</h1> -->
+
+    <div v-for="item in list" :key="item" v-show="hide">
+      <h1 v-if="item < 3" class="alert-text">{{item}}</h1>
+      <h1 v-else-if="item > 2 && item < 5" class="normal">{{item}}</h1>
+      <h1 v-else>{{item}}</h1>
     </div>
 
-    <!-- Import App -->
-    <script src="./js/main.js"></script>
+    <input v-model="nr" placeholder="indtast nummer">
+    <br>
+    <button @click="add">tilføj tal</button>
 
-    <!-- Mount App -->
-    <script>
-      const mountedApp = app.mount('#app')
-    </script>
-  </body>
+    <button @click="hideList">toggle liste</button>
+
+    <h1 v-for="person in listnames" :key="person.name">{{person.name}} - {{person.age}}</h1>
+
+    <input v-model="name" placeholder="enter your name">
+    <input v-model="age" placeholder="enter your age">
+
+    <button @click="addPerson">Add person</button>
+
+  </div>
+
+  <!-- Import App -->
+  <script src="./js/main.js"></script>
+
+  <!-- Mount App -->
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
 </html>
